@@ -8,8 +8,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import RepoCard from "../components/RepoCard";
 
-import axios from "../axios";
+import axios from 'axios';
 import {useParams } from "react-router-dom";
+
 
 const User = () => {
   const { login } = useParams();
@@ -22,10 +23,11 @@ const User = () => {
 
   useEffect(() => {
     const fetchUserInformation = async () => {
+      const BASE_URL = "https://api.github.com"; 
       try {
         const response = await Promise.all([
-          axios.get(`/users/${login}`),
-          axios.get(`/users/${login}/repos`),
+          axios.get( `${BASE_URL}/users/${login}`),
+          axios.get(`${BASE_URL}/users/${login}/repos`),
         ]);
         setUserInfo(response[0].data);
         setRepos(response[1].data);
@@ -34,7 +36,7 @@ const User = () => {
       }
     };
     fetchUserInformation();
-  });
+  },);
 
   return (
     <Box bgcolor="#eaeef2" >

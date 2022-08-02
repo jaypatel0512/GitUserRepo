@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import UserCard from "../components/UserCard";
 
-import axios from "../axios";
+import axios from 'axios';
 
 
 const Home = () => {
@@ -22,7 +22,8 @@ const Home = () => {
 
   const fetchUsers = async () => {
     try {
-      const { data } = await axios.get("/search/users?q=" + query);
+      const BASE_URL = "https://api.github.com";
+      const { data } = await axios.get(`${BASE_URL}/search/users?q=${query}`);
       return data?.items;
     } catch (error) {
       console.log(error);
