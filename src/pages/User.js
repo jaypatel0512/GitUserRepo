@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import RepoCard from "../components/RepoCard";
 
 import axios from "../axios";
-import { Link, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 
 const User = () => {
   const { login } = useParams();
@@ -34,7 +34,7 @@ const User = () => {
       }
     };
     fetchUserInformation();
-  }, []);
+  });
 
   return (
     <Box bgcolor="#eaeef2" >
